@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hockey League Analysis — Isca M4</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0f766e">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<style>
+  :root {
+    --bg:      #0b1120;
+    --panel:   #131c31;
+    --line:    #24304d;
+    --text:    #e6ebf5;
+    --muted:   #93a1bd;
+    --accent:  #38bdf8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 "Segoe UI", -apple-system, system-ui, Helvetica, Arial, sans-serif;
+  }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px 72px; }
+
+  header {
+    padding: 56px 0 28px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 40px;
+  }
+
+  h1 { margin: 0 0 10px; font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.15; }
+
+  .sub { margin: 0 0 22px; color: var(--muted); max-width: 62ch; }
+
+  /* The point of the page for a recruiter: the code behind the charts. */
+  .repo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .repo-link:hover { background: var(--accent); color: #04121f; }
+
+  .tag {
+    display: inline-block;
+    margin: 0 6px 8px 0;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  figure {
+    margin: 0 0 44px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* The charts were rendered on white, so keep a light plate behind them
+       rather than tinting the panel and muddying the colours. */
+    background: #fff;
+  }
+
+  figcaption { padding: 16px 20px 18px; border-top: 1px solid var(--line); }
+
+  figcaption h2 { margin: 0 0 6px; font-size: 1.05rem; }
+
+  figcaption p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>🏑 Hockey League Analysis</h1>
+    <p class="sub">
+      A Python scraper and analysis of the 2025/26 West Hockey Men's league season,
+      following <strong>Isca M4</strong> through 24 match days. Match results were pulled
+      from the England Hockey fixtures API, turned into a cumulative league table, and
+      visualised with matplotlib.
+    </p>
+
+    <div>
+      <span class="tag">Python</span>
+      <span class="tag">pandas</span>
+      <span class="tag">matplotlib</span>
+      <span class="tag">requests</span>
+      <span class="tag">Jupyter</span>
+    </div>
+
+    <p style="margin-top:18px">
+      <a class="repo-link" href="https://github.com/PhilOutram/hockey-league-analysis">
+        &lt;/&gt; View the Python source on GitHub
+      </a>
+    </p>
+  </header>
+
+  <figure>
+    <img src="assets/heatmap.png" alt="Grid of win, draw and loss results for all twelve teams across the season">
+    <figcaption>
+      <h2>Form guide</h2>
+      <p>Every result for all twelve teams, week by week. Green is a win, grey a draw,
+         red a loss — the whole season readable at a glance.</p>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/cumulative-points.png" alt="Line chart of cumulative league points for all teams">
+    <figcaption>
+      <h2>Cumulative points</h2>
+      <p>Points accumulating across the season, with Isca M4 picked out against the
+         rest of the division.</p>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/league-position.png" alt="Line chart of league position by week for all teams">
+    <figcaption>
+      <h2>League position by week</h2>
+      <p>The same season seen as table position rather than points. Isca M4 climbed from
+         9th at the turn of the year to finish 6th.</p>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/league_animation.gif" alt="Animated bar chart race of the league table across the season">
+    <figcaption>
+      <h2>The season, animated</h2>
+      <p>A bar chart race of the league table replaying the full campaign, generated
+         with matplotlib's animation writer.</p>
+    </figcaption>
+  </figure>
+
+  <footer>
+    <p>
+      Built by Phil Outram ·
+      <a href="https://github.com/PhilOutram/hockey-league-analysis">Python source</a> ·
+      <a href="https://philoutram.github.io/">More projects</a>
+    </p>
+    <p>
+      Data: England Hockey West fixtures, 2025/26 season. The API this scraped is no
+      longer publicly reachable, so the notebook ships with the results it produced.
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>
